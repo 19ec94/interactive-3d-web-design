@@ -3,9 +3,6 @@
   height: 100vh;
   width: 100%;
 }
-ul {
-  list-style-type: none;
-}
 
 nav {
   display: flex;
