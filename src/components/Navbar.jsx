@@ -30,6 +30,9 @@ export const Navbar = () => {
         <li>
           <NavLink to="/levels">Levels</NavLink>
         </li>
+        <li>
+          <NavLink to="/scoreboard">Scoreboard</NavLink>
+        </li>
       </ul>
     </nav>
   );

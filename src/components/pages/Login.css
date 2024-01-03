@@ -58,7 +58,9 @@
   color: #797979;
   font-size: 19px;
 }
-
+.passwords .input {
+  margin-bottom: 15px;
+}
 .forgot-password {
   padding-left: 62px;
   margin-top: 17px;
@@ -75,4 +77,23 @@
   display: flex;
   gap: 10px;
   margin: 40px auto;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 59px;
+  color: #fff;
+  background: #4c00b4;
+  border-radius: 50px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gray {
+  background: #eaeaea;
+  color: #676767;
 }

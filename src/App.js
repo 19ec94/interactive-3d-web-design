@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import { About, Login, Levels, Home } from "./components/pages";
+import { About, Login, Levels, Home, Scoreboard } from "./components/pages";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route path="/levels" element={<Levels />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/scoreboard" element={<Scoreboard />} />
       </Routes>
     </div>
   );
