@@ -7,7 +7,7 @@ export const Navbar = () => {
   return (
     <nav>
       <Link to="/" className="title">
-        Website
+        Interactive 3D
       </Link>
       <div
         className="menu"

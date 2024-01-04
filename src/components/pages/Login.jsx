@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./Login.css";
 import user_icon from "../../Assets/person.png";
 import email_icon from "../../Assets/email.png";
@@ -6,6 +8,7 @@ import password_icon from "../../Assets/password.png";
 
 export const Login = () => {
   const [action, setAction] = useState("Sign Up");
+
   return (
     <div className="container">
       <div className="header">
@@ -49,7 +52,7 @@ export const Login = () => {
         ) : (
           <div className="forgot-password">
             {" "}
-            Forgot Password? <span>Click here</span>
+            Forgot Password? <Link to="/forgot">Click here</Link>
           </div>
         )}
 
