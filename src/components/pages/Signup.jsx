@@ -9,9 +9,12 @@ import password_icon from "../../Assets/password.png";
 import FormElement from './FormElement';
 
 export const Signup = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className="container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="header">
           <div className="text">Signup</div>
           <div className="underline"></div>
@@ -29,20 +32,18 @@ export const Signup = () => {
             inputName="user_email"
             inputPlaceholder="Enter your email address"
           />
-          <div className="passwords">
-            <FormElement
-              imgSrc={password_icon}
-              inputType="text"
-              inputName="user_password"
-              inputPlaceholder="Enter your password"
-            />
-            <FormElement
-              imgSrc={password_icon}
-              inputType="text"
-              inputName="user_password_repeat"
-              inputPlaceholder="Re-enter your password"
-            />
-          </div>
+          <FormElement
+            imgSrc={password_icon}
+            inputType="text"
+            inputName="user_password"
+            inputPlaceholder="Enter your password"
+          />
+          <FormElement
+            imgSrc={password_icon}
+            inputType="text"
+            inputName="user_password_repeat"
+            inputPlaceholder="Re-enter your password"
+          />
           <div className="link-to-container">
             <div className="link-to-login">
               Already have an account? {" "}
@@ -50,12 +51,9 @@ export const Signup = () => {
             </div>
           </div>
           <div className="submit-container">
-            <div
-              className={"submit"}
-              onClick={() => { }}
-            >
+            <button type="submit" className="submit" >
               Sign up
-            </div>
+            </button>
           </div>
         </div>
       </form>
