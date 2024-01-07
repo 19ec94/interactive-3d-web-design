@@ -6,75 +6,89 @@ import user_icon from "../../Assets/person.png";
 import email_icon from "../../Assets/email.png";
 import password_icon from "../../Assets/password.png";
 
+import FormElement from './FormElement';
+
+
 export const Login = () => {
   const [action, setAction] = useState("Sign Up");
-
+  // Create a reusable form element
   return (
     <div className="container">
-      <div className="header">
-        <div className="text">{action}</div>
-        <div className="underline"></div>
-      </div>
-      <div className="inputs">
-        {action === "Login" ? (
-          <div></div>
-        ) : (
-          <div className="input">
-            <img src={user_icon} alt="" />
-            <input type="text" placeholder="Name" />
-          </div>
-        )}
-
-        <div className="input">
-          <img src={email_icon} alt="" />
-          <input type="email" placeholder="Email" />
+      <form>
+        <div className="header">
+          <div className="text">{action}</div>
+          <div className="underline"></div>
         </div>
-        {action === "Login" ? (
-          <div className="input">
-            <img src={password_icon} alt="" />
-            <input type="password" placeholder="Password" />
-          </div>
-        ) : (
-          <div className="passwords">
-            <div className="input">
-              <img src={password_icon} alt="" />
-              <input type="password" placeholder="Password" />
+        <div className="inputs">
+          {action === "Login" ? (
+            <div></div>
+          ) : (
+            <FormElement
+              imgSrc={user_icon}
+              inputType="text"
+              inputName="user_name"
+              inputPlaceholder="Name"
+            />
+          )}
+            <FormElement
+              imgSrc={email_icon}
+              inputType="text"
+              inputName="user_email"
+              inputPlaceholder="Email address"
+            />
+          {action === "Login" ? (
+            <FormElement
+              imgSrc={password_icon}
+              inputType="text"
+              inputName="user_password"
+              inputPlaceholder="Enter your password"
+            />
+          ) : (
+            <div className="passwords">
+            <FormElement
+              imgSrc={password_icon}
+              inputType="text"
+              inputName="user_password"
+              inputPlaceholder="Enter your password"
+            />
+            <FormElement
+              imgSrc={password_icon}
+              inputType="text"
+              inputName="user_password_repeat"
+              inputPlaceholder="Repeat your password"
+            />
             </div>
-            <div className="input">
-              <img src={password_icon} alt="" />
-              <input type="password" placeholder="Repeat Password" />
+          )}
+
+          {action === "Sign Up" ? (
+            <div></div>
+          ) : (
+            <div className="forgot-password">
+              {" "}
+              Forgot Password? <Link to="/forgot">Click here</Link>
             </div>
-          </div>
-        )}
+          )}
 
-        {action === "Sign Up" ? (
-          <div></div>
-        ) : (
-          <div className="forgot-password">
-            {" "}
-            Forgot Password? <Link to="/forgot">Click here</Link>
-          </div>
-        )}
-
-        <div className="submit-container">
-          <div
-            className={action === "Login" ? "submit gray" : "submit"}
-            onClick={() => {
-              setAction("Sign Up");
-            }}
-          >
-            Sign Up
-          </div>
-          <div
-            className={action === "Sign Up" ? "submit gray" : "submit"}
-            onClick={() => {
-              setAction("Login");
-            }}
-          >
-            Login
+          <div className="submit-container">
+            <div
+              className={action === "Login" ? "submit gray" : "submit"}
+              onClick={() => {
+                setAction("Sign Up");
+              }}
+            >
+              Sign Up
+            </div>
+            <div
+              className={action === "Sign Up" ? "submit gray" : "submit"}
+              onClick={() => {
+                setAction("Login");
+              }}
+            >
+              Login
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
