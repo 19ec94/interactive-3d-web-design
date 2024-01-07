@@ -17,12 +17,39 @@ export const Signup = () => {
     user_password:'',
     user_password_repeat:''
   });
+
+  const [error, setError] = useState('');
+
   const handleChange = (event) => {
     setFormData({ ...formData, 
       [event.target.name]: event.target.value });
   };
+
   const handleSubmit = async (event) => {
+
     event.preventDefault();
+
+    /*TODO:Implement comprehensive form validation using any framework!*/
+    if (!formData.user_name){
+      setError('Provide a valid username!');
+      return;
+    }
+
+    if (!formData.user_email){
+      setError('Provide a valid email!');
+      return;
+    }
+
+    if (!formData.user_password){
+      setError('Provide a valid password!');
+      return;
+    }
+
+    if (formData.user_password !== formData.user_password_repeat){
+      setError('Password and re-entered password do not match!');
+      return;
+    }
+
     try{
       console.log('Data to be send', formData);
       await axios.post('http://localhost:5000/signup', formData)
@@ -88,6 +115,7 @@ export const Signup = () => {
             </div>
           </div>
           <div className="submit-container">
+            {error && <p style={{color:'red'}}>{error}</p>}
             <button type="submit" className="submit" >
               Sign up
             </button>

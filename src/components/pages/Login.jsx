@@ -15,17 +15,34 @@ export const Login = () => {
     user_name: '',
     user_password:'',
   });
+
+  const [error, setError] = useState('');
+
   const handleChange = (event) => {
     setFormData({ ...formData, 
       [event.target.name]: event.target.value });
   };
+
   const handleSubmit = async (event) => {
+
     event.preventDefault();
+
+    /*TODO:Implement comprehensive form validation using any framework!*/
+    if (!formData.user_name){
+      setError('Provide a valid username!');
+      return;
+    }
+    if (!formData.user_password){
+      setError('Provide a valid password!');
+      return;
+    }
+
     try{
       console.log('Data to be send', formData);
       await axios.post('http://localhost:5000/login', formData)
       console.log('Form submitted Sucessfully!');
     }catch (error) {
+      /* debugging */
       if (error.response){
         console.log('error response data:', error.response.data);
         console.log('Status code:', error.response.status);
@@ -39,6 +56,7 @@ export const Login = () => {
       console.log('error config', error.config);
     }
   };
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
@@ -80,6 +98,6 @@ export const Login = () => {
           </div>
         </div>
       </form>
-    </div>
+    </div> /* form container */
   );
 };
