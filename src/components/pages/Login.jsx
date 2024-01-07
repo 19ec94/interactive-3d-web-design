@@ -9,7 +9,6 @@ import FormElement from './FormElement';
 
 
 export const Login = () => {
-  const [action, setAction] = useState("Login");
   return (
     <div className="container">
       <form>
@@ -42,9 +41,8 @@ export const Login = () => {
           </div>
           <div className="submit-container">
             <div
-              className={action === "Sign Up" ? "submit gray" : "submit"}
+              className={"submit"}
               onClick={() => {
-                setAction("Login");
               }}
             >
               Log in

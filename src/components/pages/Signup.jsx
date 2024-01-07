@@ -9,8 +9,6 @@ import password_icon from "../../Assets/password.png";
 import FormElement from './FormElement';
 
 export const Signup = () => {
-  const [action, setAction] = useState("Sign Up");
-  // Create a reusable form element
   return (
     <div className="container">
       <form>
@@ -29,7 +27,7 @@ export const Signup = () => {
             imgSrc={email_icon}
             inputType="text"
             inputName="user_email"
-            inputPlaceholder="Email address"
+            inputPlaceholder="Enter your email address"
           />
           <div className="passwords">
             <FormElement
@@ -42,7 +40,7 @@ export const Signup = () => {
               imgSrc={password_icon}
               inputType="text"
               inputName="user_password_repeat"
-              inputPlaceholder="Repeat your password"
+              inputPlaceholder="Re-enter your password"
             />
           </div>
           <div className="link-to-container">
@@ -53,12 +51,10 @@ export const Signup = () => {
           </div>
           <div className="submit-container">
             <div
-              className={action === "Login" ? "submit gray" : "submit"}
-              onClick={() => {
-                setAction("Sign Up");
-              }}
+              className={"submit"}
+              onClick={() => { }}
             >
-              Sign Up
+              Sign up
             </div>
           </div>
         </div>
