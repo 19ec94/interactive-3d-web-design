@@ -52,7 +52,7 @@ export const Signup = () => {
 
     try{
       console.log('Data to be send', formData);
-      await axios.post('http://localhost:5000/signup', formData)
+      await axios.post('/signup', formData)
       console.log('Form submitted Sucessfully!');
     }catch (error) {
       if (error.response){
@@ -94,7 +94,7 @@ export const Signup = () => {
           />
           <FormElement
             imgSrc={password_icon}
-            inputType="text"
+            inputType="password"
             inputName="user_password"
             inputValue={formData.user_password}
             inputPlaceholder="Enter your password"
@@ -102,7 +102,7 @@ export const Signup = () => {
           />
           <FormElement
             imgSrc={password_icon}
-            inputType="text"
+            inputType="password"
             inputName="user_password_repeat"
             inputValue={formData.user_password_repeat}
             inputPlaceholder="Re-enter your password"

@@ -39,7 +39,7 @@ export const Login = () => {
 
     try{
       console.log('Data to be send', formData);
-      await axios.post('http://localhost:5000/login', formData)
+      await axios.post('/login', formData)
       console.log('Form submitted Sucessfully!');
     }catch (error) {
       /* debugging */
@@ -75,7 +75,7 @@ export const Login = () => {
           />
           <FormElement
             imgSrc={password_icon}
-            inputType="text"
+            inputType="password"
             inputName="user_password"
             inputValue={formData.user_password}
             inputPlaceholder="Enter your password"
