@@ -9,6 +9,9 @@ import FormElement from './FormElement';
 
 
 export const Login = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className="container">
       <form>
@@ -40,13 +43,9 @@ export const Login = () => {
             </div>
           </div>
           <div className="submit-container">
-            <div
-              className={"submit"}
-              onClick={() => {
-              }}
-            >
+            <button type="submit" className={"submit"} >
               Log in
-            </div>
+            </button>
           </div>
         </div>
       </form>
