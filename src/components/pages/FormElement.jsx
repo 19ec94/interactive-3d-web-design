@@ -1,5 +1,11 @@
-const FormElement = (
-  {imgSrc, inputType, inputName, inputPlaceholder}) => {
+const FormElement = ( {
+  imgSrc, 
+  inputType,
+  inputName, 
+  inputValue, 
+  inputPlaceholder,
+  inputOnChange,
+}) => {
     return (
       <div className="input">
         <label htmlFor={inputName}>
@@ -11,7 +17,9 @@ const FormElement = (
         <input 
           type={inputType}
           name={inputName}
+          value={inputValue}
           placeholder={inputPlaceholder}
+          onChange={inputOnChange}
         />
       </div>
     );
