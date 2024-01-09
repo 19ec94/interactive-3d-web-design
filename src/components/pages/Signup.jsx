@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 
 import "./Login.css";
 import user_icon from "../../Assets/person.png";
+import email_icon from "../../Assets/email.png";
 import password_icon from "../../Assets/password.png";
 
 import FormElement from './FormElement';
 
-
-export const Login = () => {
+export const Signup = () => {
   // Initialise variable state to empty string
   const [formData, setFormData] = useState({
     user_name: '',
+    user_email:'',
     user_password:'',
+    user_password_repeat:''
   });
 
   const [error, setError] = useState('');
@@ -32,17 +34,27 @@ export const Login = () => {
       setError('Provide a valid username!');
       return;
     }
+
+    if (!formData.user_email){
+      setError('Provide a valid email!');
+      return;
+    }
+
     if (!formData.user_password){
       setError('Provide a valid password!');
       return;
     }
 
+    if (formData.user_password !== formData.user_password_repeat){
+      setError('Password and re-entered password do not match!');
+      return;
+    }
+
     try{
       console.log('Data to be send', formData);
-      await axios.post('/login', formData)
+      await axios.post('/signup', formData)
       console.log('Form submitted Sucessfully!');
     }catch (error) {
-      /* debugging */
       if (error.response){
         console.log('error response data:', error.response.data);
         console.log('Status code:', error.response.status);
@@ -56,12 +68,11 @@ export const Login = () => {
       console.log('error config', error.config);
     }
   };
-
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="header">
-          <div className="text">Login</div>
+          <div className="text">Signup</div>
           <div className="underline"></div>
         </div>
         <div className="inputs">
@@ -74,6 +85,14 @@ export const Login = () => {
             inputOnChange={handleChange}
           />
           <FormElement
+            imgSrc={email_icon}
+            inputType="text"
+            inputName="user_email"
+            inputValue={formData.user_email}
+            inputPlaceholder="Enter your email address"
+            inputOnChange={handleChange}
+          />
+          <FormElement
             imgSrc={password_icon}
             inputType="password"
             inputName="user_password"
@@ -81,24 +100,28 @@ export const Login = () => {
             inputPlaceholder="Enter your password"
             inputOnChange={handleChange}
           />
+          <FormElement
+            imgSrc={password_icon}
+            inputType="password"
+            inputName="user_password_repeat"
+            inputValue={formData.user_password_repeat}
+            inputPlaceholder="Re-enter your password"
+            inputOnChange={handleChange}
+          />
           <div className="link-to-container">
-            <div className="link-to-signup">
-              Don't have an account? {" "}
-              <Link to="/signup">Sign up</Link>
-            </div>
-            <div className="link-to-reset-data">
-              Forgot login details? {" "}
-              <Link to="/forgot">Reset login details</Link>
+            <div className="link-to-login">
+              Already have an account? {" "}
+              <Link to="/login">Log in</Link>
             </div>
           </div>
           <div className="submit-container">
             {error && <p style={{color:'red'}}>{error}</p>}
             <button type="submit" className="submit" >
-              Log in
+              Sign up
             </button>
           </div>
         </div>
       </form>
-    </div> /* form container */
+    </div> /* form-container */
   );
 };
