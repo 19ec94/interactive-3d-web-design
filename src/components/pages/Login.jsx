@@ -92,6 +92,7 @@ export const Login = () => {
             </div>
           </div>
           <div className="submit-container">
+            {error && <p style={{color:'red'}}>{error}</p>}
             <button type="submit" className="submit" >
               Log in
             </button>
