@@ -11,6 +11,8 @@ export const Forgot = () => {
     user_email: '',
   });
 
+  const [error, setError] = useState('');
+
   const handleChange = (event) => {
     setFormData({ ...formData, 
       [event.target.name]: event.target.value });
@@ -21,8 +23,31 @@ export const Forgot = () => {
 
     event.preventDefault();
 
+    /*TODO:Implement comprehensive form validation using any framework!*/
+    if (!formData.user_email){
+      setError('Provide a valid email address!');
+      return;
+    }
+
     // define form submission logic here
-    console.log("Reset login credentials submitted!");
+    try {
+      console.log('Data to be send', formData);
+      // await axios.post('/reset', formData)
+      console.log("Reset login credentials submitted!");
+    } catch (error) {
+      /* debugging */
+      if (error.response){
+        console.log('error response data:', error.response.data);
+        console.log('Status code:', error.response.status);
+        console.log('Status text:', error.response.statusText);
+        console.log('Status Headers:', error.response.headers);
+      } else if (error.request) {
+        console.log('No response received:', error.request);
+      } else {
+        console.log('error message', error.message);
+      }
+      console.log('error config', error.config);
+    }
 
     setIsSubmitted(true);
   };
@@ -36,7 +61,7 @@ export const Forgot = () => {
       <form onSubmit={handleSubmit}>
         <div className="header">
           { isSubmitted ? (
-            <div className="text">An email has been sent!</div>
+            <div className="text">A reset-link has been sent to your email!</div>
           ): (
             <div className="text">Forgot login details?</div>
           )}
@@ -49,14 +74,14 @@ export const Forgot = () => {
                 Found your login details? Proceed to {" "}
                 <Link to="/login" 
                 >
-                Log in</Link>.
+                  Log in</Link>.
               </div>
               <div className="link-to-reset-data">
-                Haven't received the Email yet? Try {" "}
+                Haven't received the reset-link yet? Try {" "}
                 <Link to="/forgot"
-                onClick={handleRetryReset}
+                  onClick={handleRetryReset}
                 >
-                resetting login details</Link> {" "} again.
+                  resetting login details</Link> {" "} again.
               </div>
             </div>
           </div>
@@ -75,10 +100,11 @@ export const Forgot = () => {
                 Found your login details? Proceed to {" "}
                 <Link to="/login" 
                 >
-                Log in</Link>.
+                  Log in</Link>.
               </div>
             </div>
             <div className="submit-container">
+            {error && <p style={{color:'red'}}>{error}</p>}
               <button 
                 type="submit" 
                 className="submit" 
