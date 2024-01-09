@@ -36,9 +36,9 @@ export const Forgot = () => {
       <form onSubmit={handleSubmit}>
         <div className="header">
           { isSubmitted ? (
-            <div className="text">An Email has been sent!</div>
+            <div className="text">An email has been sent!</div>
           ): (
-            <div className="text">Forgot Login details?</div>
+            <div className="text">Forgot login details?</div>
           )}
           <div className="underline"></div>
         </div> 
@@ -49,14 +49,14 @@ export const Forgot = () => {
                 Found your login details? Proceed to {" "}
                 <Link to="/login" 
                 >
-                Log in</Link>
+                Log in</Link>.
               </div>
               <div className="link-to-reset-data">
-                Haven't received the Email yet? {" "}
+                Haven't received the Email yet? Try {" "}
                 <Link to="/forgot"
                 onClick={handleRetryReset}
                 >
-                Retry reset</Link>
+                resetting login details</Link> {" "} again.
               </div>
             </div>
           </div>
@@ -70,6 +70,14 @@ export const Forgot = () => {
               inputPlaceholder="Enter your Email"
               inputOnChange={handleChange}
             />
+            <div className="link-to-container">
+              <div className="link-to-signup">
+                Found your login details? Proceed to {" "}
+                <Link to="/login" 
+                >
+                Log in</Link>.
+              </div>
+            </div>
             <div className="submit-container">
               <button 
                 type="submit" 
