@@ -16,9 +16,19 @@ nav {
   top: 0;
 }
 
+#logo {
+  width: 60px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border-radius: 30px;
+}
+
 nav .title {
   font-size: 1.5rem;
-  margin: 1rem;
+  margin-left: 0px;
+  margin-top: -8px;
+  margin-bottom: -8px;
   font-weight: bold;
   text-decoration: none;
   color: white;
@@ -60,10 +70,26 @@ nav .menu span {
   background-color: #fff;
   border-radius: 0.2rem;
 }
+
+#x {
+}
 /* Why is it overflowing when smaller than 480px??  */
 @media (max-width: 480px) {
   nav .menu {
     display: flex;
+  }
+  #logo {
+    width: 40px;
+    height: auto;
+
+    border-radius: 30px;
+  }
+  nav .title {
+    font-size: 1.5rem;
+    margin: 1px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
   }
   nav {
     flex-direction: column;
@@ -80,7 +106,7 @@ nav .menu span {
   }
   nav ul li {
     width: 100%;
-    text-align: center;
+    text-align: right;
   }
   nav ul li a {
     margin: 0.2rem 0.5rem;

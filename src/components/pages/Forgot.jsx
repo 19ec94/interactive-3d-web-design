@@ -33,7 +33,7 @@ export const Forgot = () => {
         ) : (
           <div className="inputs">
             <div className="password-submitted">
-              Password Submitted! Check Emails
+              Reset Submitted! Check Emails
             </div>
             <div className="submit-container-reset">
               <div
