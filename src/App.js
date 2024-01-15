@@ -9,12 +9,15 @@ import {Levels} from './components/pages/Levels';
 import {Login} from './components/pages/Login';
 import {About} from './components/pages/About';
 import {Signup} from './components/pages/Signup';
+import {AuthProvider} from './components/AuthContext';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <Navbar />
+      <AuthProvider>
+        <header>
+          <Navbar />
+        </header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/levels" element={<Levels />} />
@@ -24,7 +27,7 @@ function App() {
           <Route path="/scoreboard" element={<Scoreboard />} />
           <Route path="/forgot" element={<Forgot />} />
         </Routes>
-      </header>
+      </AuthProvider>
     </div>
   );
 }
