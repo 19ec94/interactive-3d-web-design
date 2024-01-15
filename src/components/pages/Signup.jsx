@@ -9,6 +9,8 @@ import password_icon from "../../Assets/password.png";
 
 import FormElement from './FormElement';
 
+import { useAuth } from '../AuthContext';
+
 export const Signup = () => {
   // Initialise variable state to empty string
   const [formData, setFormData] = useState({
@@ -19,6 +21,9 @@ export const Signup = () => {
   });
 
   const [error, setError] = useState('');
+
+  // Import global variables to update the login status
+  const {setLoginStatus} = useAuth();
 
   const handleChange = (event) => {
     setFormData({ ...formData, 
@@ -51,21 +56,23 @@ export const Signup = () => {
     }
 
     try{
-      console.log('Data to be send', formData);
-      await axios.post('/signup', formData)
-      console.log('Form submitted Sucessfully!');
+      console.log('Data to be sent', formData);// debugging
+      // POST Signup data
+      const response = await axios.post('/user/signup', formData)
+      console.log(response);// debugging
+      // Set error to empty string upon success
+      setError('');
+      // Update global variable on sucessful login
+      setLoginStatus(true);
     }catch (error) {
-      if (error.response){
-        console.log('error response data:', error.response.data);
-        console.log('Status code:', error.response.status);
-        console.log('Status text:', error.response.statusText);
-        console.log('Status Headers:', error.response.headers);
-      } else if (error.request) {
-        console.log('No response received:', error.request);
-      } else {
-        console.log('error message', error.message);
-      }
-      console.log('error config', error.config);
+      /*
+       * Assuming the backend server sends the error message in the following 
+       * format: { "status":"error", "data": {}, "error":{"code": 400, "message
+       * ": "error message:}}
+       */
+      console.log('error', error); // debugging
+      console.log(error.response.data.error.message);
+      setError(error.response.data.error.message);
     }
   };
   return (
