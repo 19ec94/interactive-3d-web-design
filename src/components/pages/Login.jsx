@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -12,6 +12,15 @@ import { useAuth } from '../AuthContext';
 
 
 export const Login = () => {
+  const navigate = useNavigate();
+
+  useEffect( () => {
+    let isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    if (isLoggedIn){
+      navigate("/dashboard");
+    }
+  });
+
   // Initialise variable state to empty string
   const [formData, setFormData] = useState({
     user_name: '',
@@ -22,8 +31,6 @@ export const Login = () => {
   const {setLoginStatus} = useAuth();
 
   const [error, setError] = useState('');
-
-  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData({ ...formData, 
