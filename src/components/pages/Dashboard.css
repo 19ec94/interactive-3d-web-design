@@ -1,0 +1,21 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #fff;
+  padding-bottom: 30px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 10px;
+}
+.text {
+  color: #3c009d;
+  font-size: 38px;
+  font-weight: 700;
+}
