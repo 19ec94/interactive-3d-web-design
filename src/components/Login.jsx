@@ -105,7 +105,7 @@ export const Login = () => {
             </div>
             <div className="link-to-reset-data">
               Forgot login details? {" "}
-              <Link to="/forgot">Reset login details</Link>
+              <Link to="/reset">Reset login details</Link>
             </div>
           </div>
           <div className="submit-container">

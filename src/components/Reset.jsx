@@ -3,7 +3,7 @@ import email_icon from "../Assets/email.png";
 import { Link } from "react-router-dom";
 import FormElement from "./FormElement"
 
-export const Forgot = () => {
+export const Reset = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -78,7 +78,7 @@ export const Forgot = () => {
               </div>
               <div className="link-to-reset-data">
                 Haven't received the reset-link yet? Try {" "}
-                <Link to="/forgot"
+                <Link to="/reset"
                   onClick={handleRetryReset}
                 >
                   resetting login details</Link> {" "} again.

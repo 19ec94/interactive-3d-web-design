@@ -5,7 +5,7 @@ import {Route, Routes } from "react-router-dom";
 import {About} from './components/About';
 import {AuthProvider} from './components/AuthContext';
 import {Dashboard} from './components/Dashboard';
-import {Forgot} from './components/Forgot';
+import {Reset} from './components/Reset';
 import {Home} from './components/Home';
 import {Levels} from './components/Levels';
 import {Login} from './components/Login';
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
-          <Route exact path="/forgot" element={<Forgot />} />
+          <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/scoreboard" element={<Scoreboard />} />
           <Route exact path="/levels"
             element={
