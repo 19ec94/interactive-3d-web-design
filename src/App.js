@@ -6,6 +6,7 @@ import {Forgot} from './components/pages/Forgot';
 import {Scoreboard} from './components/pages/Scoreboard';
 import {Home} from './components/pages/Home';
 import {Levels} from './components/pages/Levels';
+import {Dashboard} from './components/pages/Dashboard';
 import {Login} from './components/pages/Login';
 import {About} from './components/pages/About';
 import {Signup} from './components/pages/Signup';
@@ -36,7 +37,7 @@ function App() {
           <Route exact path="/dashboard"
             element={
               <ProtectedRoute>
-                <Levels />
+                <Dashboard />
               </ProtectedRoute>
             }
           />
