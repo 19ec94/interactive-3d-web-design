@@ -2,14 +2,14 @@ import "./App.css";
 import { Navbar } from "./components/Navbar";
 import {Route, Routes } from "react-router-dom";
 
-import {Forgot} from './components/pages/Forgot';
-import {Scoreboard} from './components/pages/Scoreboard';
-import {Home} from './components/pages/Home';
-import {Levels} from './components/pages/Levels';
-import {Dashboard} from './components/pages/Dashboard';
-import {Login} from './components/pages/Login';
-import {About} from './components/pages/About';
-import {Signup} from './components/pages/Signup';
+import {Forgot} from './components/Forgot';
+import {Scoreboard} from './components/Scoreboard';
+import {Home} from './components/Home';
+import {Levels} from './components/Levels';
+import {Dashboard} from './components/Dashboard';
+import {Login} from './components/Login';
+import {About} from './components/About';
+import {Signup} from './components/Signup';
 import {AuthProvider} from './components/AuthContext';
 import {ProtectedRoute} from "./components/ProtectedRoute";
 

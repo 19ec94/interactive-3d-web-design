@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import email_icon from "../../Assets/email.png";
+import email_icon from "../Assets/email.png";
 import { Link } from "react-router-dom";
 import FormElement from "./FormElement"
 

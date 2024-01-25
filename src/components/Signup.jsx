@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import "./Login.css";
-import user_icon from "../../Assets/person.png";
-import email_icon from "../../Assets/email.png";
-import password_icon from "../../Assets/password.png";
+import user_icon from "../Assets/person.png";
+import email_icon from "../Assets/email.png";
+import password_icon from "../Assets/password.png";
 
 import FormElement from './FormElement';
 
-import { useAuth } from '../AuthContext';
+import { useAuth } from './AuthContext';
 
 export const Signup = () => {
   // Initialise variable state to empty string
