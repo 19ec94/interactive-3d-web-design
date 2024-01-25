@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import "./Login.css";
@@ -21,6 +21,7 @@ export const Signup = () => {
   });
 
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   // Import global variables to update the login status
   const {setLoginStatus} = useAuth();
@@ -64,6 +65,7 @@ export const Signup = () => {
       setError('');
       // Update global variable on sucessful login
       setLoginStatus(true);
+      navigate("/levels")
     }catch (error) {
       /*
        * Assuming the backend server sends the error message in the following 

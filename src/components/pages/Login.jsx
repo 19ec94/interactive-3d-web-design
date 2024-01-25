@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 import "./Login.css";
@@ -22,6 +22,8 @@ export const Login = () => {
   const {setLoginStatus} = useAuth();
 
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData({ ...formData, 
@@ -51,6 +53,7 @@ export const Login = () => {
       setError('');
       // Update global variable on sucessful login
       setLoginStatus(true);
+      navigate("/levels")
     }catch (error) {
       /*
        * Assuming the backend server sends the error message in the following 
@@ -58,8 +61,9 @@ export const Login = () => {
        * ": "error message:}}
        */
       console.log('error', error); // debugging
-      console.log(error.response.data.error.message); // debugging
-      setError(error.response.data.error.message);
+      if (error.response.data.error.message){ // debugging
+        setError(error.response.data.error.message);
+      }
     }
   };
 
