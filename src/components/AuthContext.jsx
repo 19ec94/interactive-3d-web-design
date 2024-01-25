@@ -10,29 +10,38 @@ export const AuthProvider = ({ children }) => {
     const storedStatus = sessionStorage.getItem('isLoggedIn');
     return storedStatus ? JSON.parse(storedStatus) : false;
   });
+  // Define varibale to hold session token
+  const [sessionToken, setSessionToken] = useState( () => {
+    const storedToken = sessionStorage.getItem('sessionToken');
+    return storedToken ? JSON.parse(storedToken) : '';
+  });
  
   // Define a function to update global variables upon login
+  // TODO: Find a better way to set and remove global variables
   const login = () => {
-    // TODO: save token cookie 
     setIsLoggedIn(true);
     sessionStorage.setItem('isLoggedIn', JSON.stringify(true));
   };
 
-  // Define a function to update global variables upon login
+  // Define a function to update global variables upon logout
+  // TODO: Find a better way to set and remove global variables upon login
   const logout = () => {
-    // TODO: remove token cookie 
     setIsLoggedIn(false);
     sessionStorage.removeItem('isLoggedIn');
   };
   
   // Define a function to update the global varibale within a child component
-  const setLoginStatus = (status) => {
+  const setLoginStatusGlobally = (status) => {
     setIsLoggedIn(status);
     sessionStorage.setItem('isLoggedIn', JSON.stringify(status));
   };
+  const setSessionTokenGlobally = (sessionToken) => {
+    setSessionToken(sessionToken);
+    sessionStorage.setItem('sessionToken', JSON.stringify(sessionToken));
+  };
 
   return (
-    <AuthContext.Provider value={{isLoggedIn, login, logout, setLoginStatus}}>
+    <AuthContext.Provider value={{isLoggedIn, sessionToken, login, logout, setLoginStatusGlobally, setSessionTokenGlobally}}>
       { children }
     </AuthContext.Provider>
   );
