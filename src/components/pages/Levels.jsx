@@ -6,7 +6,7 @@ export const Levels = () => {
   return <div className="dashboard-container">
     <div className="header">
       <div className="text">
-        Hi Techlabs, Welcome!
+         Welcome to Levels!
       </div>
     </div>
     </div>;
