@@ -20,6 +20,7 @@ const FormElement = ( {
           value={inputValue}
           placeholder={inputPlaceholder}
           onChange={inputOnChange}
+          autoComplete="on"
         />
       </div>
     );
