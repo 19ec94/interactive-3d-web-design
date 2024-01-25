@@ -65,7 +65,7 @@ export const Signup = () => {
       setError('');
       // Update global variable on sucessful login
       setLoginStatus(true);
-      navigate("/levels")
+      navigate("/dashboard")
     }catch (error) {
       /*
        * Assuming the backend server sends the error message in the following 
@@ -73,8 +73,9 @@ export const Signup = () => {
        * ": "error message:}}
        */
       console.log('error', error); // debugging
-      console.log(error.response.data.error.message);
-      setError(error.response.data.error.message);
+      if (error.response.data.error.message){
+        setError(error.response.data.error.message);
+      }
     }
   };
   return (

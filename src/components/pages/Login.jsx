@@ -53,7 +53,7 @@ export const Login = () => {
       setError('');
       // Update global variable on sucessful login
       setLoginStatus(true);
-      navigate("/levels")
+      navigate("/dashboard")
     }catch (error) {
       /*
        * Assuming the backend server sends the error message in the following 
