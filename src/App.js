@@ -46,6 +46,8 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          {/* Catch all routes that don't match one of the above */}
+          <Route exact path="*" element={<About />} />
         </Routes>
       </AuthProvider>
     </div>
