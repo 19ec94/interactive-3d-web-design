@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import email_icon from "../Assets/email.png";
-import { Link } from "react-router-dom";
 import FormElement from "./FormElement"
 
 export const Reset = () => {
+  const navigate = useNavigate();
 
+  // Redirect logged in user to dashboard
+  useEffect( () => {
+    let isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    if (isLoggedIn){
+      navigate("/dashboard");
+    }
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [formData, setFormData] = useState({

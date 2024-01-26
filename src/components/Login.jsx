@@ -14,6 +14,7 @@ import { useAuth } from './AuthContext';
 export const Login = () => {
   const navigate = useNavigate();
 
+  // Redirect logged in user to dashboard
   useEffect( () => {
     let isLoggedIn = sessionStorage.getItem("isLoggedIn");
     if (isLoggedIn){
@@ -28,7 +29,7 @@ export const Login = () => {
   });
 
   // Import global variables to update the login status
-  const {setLoginStatus} = useAuth();
+  const {setLoginStatusGlobally} = useAuth();
 
   const [error, setError] = useState('');
 
@@ -59,7 +60,7 @@ export const Login = () => {
       // Set error to empty string upon success
       setError('');
       // Update global variable on sucessful login
-      setLoginStatus(true);
+      setLoginStatusGlobally(true);
       navigate("/dashboard")
     }catch (error) {
       /*
