@@ -3,11 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import "./Login.css";
-import user_icon from "../Assets/person.png";
-import email_icon from "../Assets/email.png";
-import password_icon from "../Assets/password.png";
 import FormElement from './FormElement';
 import { useAuth } from './AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 
 export const Signup = () => {
   const navigate = useNavigate();
@@ -94,7 +93,7 @@ export const Signup = () => {
         </div>
         <div className="inputs">
           <FormElement
-            imgSrc={user_icon}
+            labelContent={<FontAwesomeIcon icon={ faUser } />}
             inputType="text"
             inputName="user_name"
             inputValue={formData.user_name}
@@ -102,7 +101,7 @@ export const Signup = () => {
             inputOnChange={handleChange}
           />
           <FormElement
-            imgSrc={email_icon}
+            labelContent={ <FontAwesomeIcon icon={ faEnvelope } /> }
             inputType="text"
             inputName="user_email"
             inputValue={formData.user_email}
@@ -110,7 +109,7 @@ export const Signup = () => {
             inputOnChange={handleChange}
           />
           <FormElement
-            imgSrc={password_icon}
+            labelContent={ <FontAwesomeIcon icon={ faLock } /> }
             inputType="password"
             inputName="user_password"
             inputValue={formData.user_password}
@@ -118,7 +117,7 @@ export const Signup = () => {
             inputOnChange={handleChange}
           />
           <FormElement
-            imgSrc={password_icon}
+            labelContent={ <FontAwesomeIcon icon={ faLock } /> }
             inputType="password"
             inputName="user_password_repeat"
             inputValue={formData.user_password_repeat}

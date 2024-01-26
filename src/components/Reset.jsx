@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import email_icon from "../Assets/email.png";
 import FormElement from "./FormElement"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 export const Reset = () => {
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ export const Reset = () => {
         ) : (
           <div className="inputs">
             <FormElement
-              imgSrc={email_icon}
+              labelContent={ <FontAwesomeIcon icon={ faEnvelope } /> }
               inputType="email"
               inputName="user_email"
               inputValue={formData.user_email}

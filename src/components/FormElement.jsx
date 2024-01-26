@@ -1,5 +1,5 @@
 const FormElement = ( {
-  imgSrc, 
+  labelContent, 
   inputType,
   inputName, 
   inputValue, 
@@ -9,10 +9,7 @@ const FormElement = ( {
     return (
       <div className="input">
         <label htmlFor={inputName}>
-          <img 
-            src={imgSrc}
-            alt="" 
-          />
+            {labelContent}
         </label>
         <input 
           type={inputType}

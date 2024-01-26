@@ -3,12 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 import "./Login.css";
-import user_icon from "../Assets/person.png";
-import password_icon from "../Assets/password.png";
-
 import FormElement from './FormElement';
-
 import { useAuth } from './AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 
 
 export const Login = () => {
@@ -84,7 +82,7 @@ export const Login = () => {
         </div>
         <div className="inputs">
           <FormElement
-            imgSrc={user_icon}
+            labelContent={ <FontAwesomeIcon icon={ faUser } /> }
             inputType="text"
             inputName="user_name"
             inputValue={formData.user_name}
@@ -92,7 +90,7 @@ export const Login = () => {
             inputOnChange={handleChange}
           />
           <FormElement
-            imgSrc={password_icon}
+            labelContent={ <FontAwesomeIcon icon={ faLock } /> }
             inputType="password"
             inputName="user_password"
             inputValue={formData.user_password}
