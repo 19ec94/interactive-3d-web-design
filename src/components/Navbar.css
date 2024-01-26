@@ -1,3 +1,6 @@
+* {
+  border: solid red 1px;
+}
 html,
 body {
   margin: 0;
@@ -24,6 +27,13 @@ nav {
   padding: 0;
   border-radius: 30px;
 }
+
+.logo-container {
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+}
+
 
 nav .title {
   font-size: 1.5rem;

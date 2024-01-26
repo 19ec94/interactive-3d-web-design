@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+
 import "./Navbar.css";
 import logo from "../Assets/logo.jpeg";
 import x from "../Assets/x-mark-24.png";
-
 import { useAuth } from './AuthContext';
 
 export const Navbar = () => {
@@ -12,13 +12,14 @@ export const Navbar = () => {
   // Define a variable to store login status. If logged in, display all
   // navigation link, else display only about, login links.
   const {isLoggedIn} = useAuth();
-
   console.log('navbar element', isLoggedIn);//Debugging
 
   return (
     <nav>
       <Link to="/" className="title">
-        <img id="logo" src={logo} alt="" />
+        <div className="logo-container">
+          <img id="logo" src={logo} alt="" />
+        </div>
       </Link>
 
       {menuOpen === false ? (
