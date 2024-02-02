@@ -12,13 +12,22 @@ import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 export const Login = () => {
   const navigate = useNavigate();
 
-  // Redirect logged in user to dashboard
+  //Check if the user is already logged in. If yes, redirect to dashboard.
   useEffect( () => {
-    let isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
+    var isLoggedIn; 
+    if (sessionData){
+      isLoggedIn = sessionData.isLoggedIn;
+    } else {
+      isLoggedIn = false;
+    }
     if (isLoggedIn){
       navigate("/dashboard");
     }
   });
+
+  // Import global variables to update the login status
+  const {sessionData, setSessionDataGlobally} = useAuth();
 
   // Initialise variable state to empty string
   const [formData, setFormData] = useState({
@@ -26,8 +35,6 @@ export const Login = () => {
     user_password:'',
   });
 
-  // Import global variables to update the login status
-  const {setLoginStatusGlobally} = useAuth();
 
   const [error, setError] = useState('');
 
@@ -53,13 +60,16 @@ export const Login = () => {
     try{
       console.log('Data to be sent', formData); //debugging
       // POST Login data
-      const response = await axios.post('/user/login', formData)
-      console.log(response); // debugging
+      const response = await axios.post('/api/user/login', formData)
       // Set error to empty string upon success
       setError('');
       // Update global variable on sucessful login
-      setLoginStatusGlobally(true);
-      navigate("/dashboard")
+      sessionData.isLoggedIn = true;
+      sessionData.sessionToken = response.data.data.token;
+      sessionData.userName = response.data.data.userName;
+      sessionData.userEmail = response.data.data.userEmail;
+      setSessionDataGlobally(sessionData);
+      navigate("/dashboard");
     }catch (error) {
       /*
        * Assuming the backend server sends the error message in the following 

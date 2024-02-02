@@ -4,15 +4,22 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../Assets/logo.jpeg";
 import x from "../Assets/x-mark-24.png";
-import { useAuth } from './AuthContext';
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Define a variable to store login status. If logged in, display all
   // navigation link, else display only about, login links.
-  const {isLoggedIn} = useAuth();
-  console.log('navbar element', isLoggedIn);//Debugging
+  const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
+  var isLoggedIn; 
+  // Check if sessionData is not null.
+  // Example scenario: when directly accessing protected API endpoint
+  // http://localhost:3000/dashboard
+  if (sessionData){
+    isLoggedIn = sessionData.isLoggedIn;
+  } else {
+    isLoggedIn = false;
+  }
 
   return (
     <nav>
