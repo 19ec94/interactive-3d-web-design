@@ -34,7 +34,6 @@ export const Navbar = () => {
           className="menu"
           onClick={() => {
             setMenuOpen(!menuOpen);
-            console.log();
           }}
         >
           <span></span>
