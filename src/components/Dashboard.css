@@ -1,21 +1,57 @@
-.dashboard-container {
+/* Naming convention: [Block]__[Element]--[Modifier] (BEM)
+ *
+ * [block-name]__[element-name]--[modifier-name]--[modifier-value]
+ *
+ * Tutorials
+ * https://sparkbox.com/foundry/bem_by_example 
+ * https://en.bem.info/methodology/naming-convention/
+ * https://scalablecss.com/bem-nesting-grandchild-elements/
+ * https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/
+ *
+ */
+
+
+.dashboard {
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-top: 50px;
   background-color: #fff;
-  padding-bottom: 30px;
+  width: 80%;
 }
-.header {
+
+.dashboard__header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 9px;
-  width: 100%;
-  margin-top: 10px;
+  padding-bottom: 30px;
+  text-align: center;
 }
-.text {
+
+.dashboard__header .dashboard__title {
   color: #3c009d;
-  font-size: 38px;
+  font-size: 2rem;
   font-weight: 700;
+}
+
+.dashboard__underline {
+  width: 61px;
+  height: 6px;
+  background: #3c009d;
+  border-radius: 9px;
+}
+
+
+/* Decalre styles for mobile screens */
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+  .dashboard__header .dashboard__title {
+    font-size: 1.5rem;
+  }
+  .dashboard__profile .dashboard__title {
+    font-size: 1rem;
+  }
 }
