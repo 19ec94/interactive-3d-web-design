@@ -29,11 +29,12 @@
   justify-content: center;
   gap: 5px;
   min-width: 95%;
-  border: 2px blue solid;
+  border: 0px blue solid;
+  height: 2rem;
 }
 
 .profile-field input {
-  min-width: 70%;
+  min-width: 60%;
 }
 
 .profile-field span {

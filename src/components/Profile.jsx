@@ -41,8 +41,10 @@ export const ProfileField = ({ labelContent, value, onUpdate }) => {
 
 export const Profile = () => {
   // get the user data from sessionStorage
-  const [userName, setUserName] = useState("X");
-  const [userEmail, setUserEmail] = useState("1@gmail.com");
+  const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
+
+  const [userName, setUserName] = useState(sessionData.userName);
+  const [userEmail, setUserEmail] = useState(sessionData.userEmail);
   const [userPassword, setUserPassword] = useState("*****");
 
   const handleUserNameUpdate = (newUserName) => {
