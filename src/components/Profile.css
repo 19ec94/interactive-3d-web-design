@@ -58,6 +58,15 @@ body {
   text-align: center;
 }
 
+.profile-field span {
+  background-color: yellow;
+}
+
+.profile-field input{
+  background-color: gray;
+  color: white;
+}
+
 .profile-field button {
   display: flex;
   justify-content: center;
@@ -90,5 +99,17 @@ body {
 
   .profile .title {
     font-size: 1.2rem;
+  }
+
+  .profile-field label {
+    width: 2%;
+  }
+
+  .profile-field input, .profile-field span {
+    width: 30%;
+  }
+
+  .profile-field button {
+    width: 5%;
   }
 }
