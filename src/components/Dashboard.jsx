@@ -2,6 +2,7 @@ import React from "react";
 
 import "./Dashboard.css";
 import  { Profile } from "./Profile";
+import  { Games } from "./Games";
 
 export const Dashboard = () => {
   return (
@@ -19,6 +20,12 @@ export const Dashboard = () => {
       <Profile />
 
       {/* TODO Game component */}
+      <Games />
+
+      {/* TODO Logout */}
+      <div className="dashboard__header">
+       Logout button here
+      </div>
 
     </div>
   );
