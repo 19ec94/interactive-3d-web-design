@@ -1,0 +1,115 @@
+/* CSS naming convention: BEM
+ * Mobile-first approach
+ *
+ */
+
+body {
+  font-size: 12px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+}
+
+.profile .title {
+  color: #3c009d;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.profile .profile-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-width: 95%;
+}
+
+.profile .profile-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+  min-width: 95%;
+  height: 2rem;
+}
+
+.custom-fontawesome-icon {
+  color: #3C009D;
+}
+
+.profile-field label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-field span, .profile-field input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile-field span {
+  background-color: yellow;
+}
+
+.profile-field input{
+  background-color: gray;
+  color: white;
+}
+
+.profile-field button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d4ed8; 
+  color: white;
+}
+
+/* 
+ * Default customisation for any screen: Small/Medium/Large
+ */ 
+
+.profile-field label {
+  width: 10%;
+}
+
+.profile-field input, .profile-field span {
+  width: 60%;
+}
+
+.profile-field button {
+  width: 20%;
+}
+
+/* Customization for screen type: Large */
+@media screen and (min-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .profile .title {
+    font-size: 1.2rem;
+  }
+
+  .profile-field label {
+    width: 2%;
+  }
+
+  .profile-field input, .profile-field span {
+    width: 30%;
+  }
+
+  .profile-field button {
+    width: 5%;
+  }
+}

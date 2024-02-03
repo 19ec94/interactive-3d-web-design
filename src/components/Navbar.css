@@ -1,3 +1,6 @@
+* {
+  border: 0px red solid;
+}
 html,
 body {
   margin: 0;
@@ -7,6 +10,7 @@ body {
 .active {
   background-color: #1d4ed8;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -24,6 +28,13 @@ nav {
   border-radius: 30px;
 }
 
+.logo-container {
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+
 nav .title {
   font-size: 1.5rem;
   margin-left: 0px;
@@ -33,6 +44,7 @@ nav .title {
   text-decoration: none;
   color: white;
 }
+
 nav ul {
   display: flex;
 }
@@ -49,6 +61,7 @@ nav ul li a {
   margin: 0 0.5rem;
   border-radius: 0.5rem;
 }
+
 nav ul li a:not(.active):hover {
   background-color: #172554;
 }
@@ -73,17 +86,20 @@ nav .menu span {
 
 #x {
 }
+
 /* Why is it overflowing when smaller than 480px??  */
 @media (max-width: 480px) {
   nav .menu {
     display: flex;
   }
+
   #logo {
     width: 40px;
     height: auto;
 
     border-radius: 30px;
   }
+
   nav .title {
     font-size: 1.5rem;
     margin: 1px;
@@ -91,23 +107,28 @@ nav .menu span {
     text-decoration: none;
     color: white;
   }
+
   nav {
     flex-direction: column;
     align-items: start;
   }
+
   nav ul {
     display: none;
     flex-direction: column;
     width: 80%;
     margin-bottom: 0.25rem;
   }
+
   nav ul.open {
     display: flex;
   }
+
   nav ul li {
     width: 100%;
     text-align: right;
   }
+
   nav ul li a {
     margin: 0.2rem 0.5rem;
   }
