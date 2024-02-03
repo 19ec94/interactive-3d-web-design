@@ -1,16 +1,25 @@
+/* CSS naming convention: BEM
+ * Mobile-first approach
+ *
+ */
+
+body {
+  font-size: 12px;
+}
 
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  width: 95%;
+  width: 100%;
   gap: 10px;
+  padding: 10px;
 }
 
 .profile .title {
   color: #3c009d;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -21,81 +30,65 @@
   align-items: center;
   gap: 10px;
   min-width: 95%;
-  border: 1.5px green solid;
 }
+
 .profile .profile-field {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 5px;
   min-width: 95%;
-  border: 0px blue solid;
   height: 2rem;
 }
 
-.profile-field input {
-  min-width: 60%;
+.custom-fontawesome-icon {
+  color: #3C009D;
 }
 
-.profile-field span {
+.profile-field label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-field span, .profile-field input {
   display: flex;
   align-items: center;
-  min-width: 70%;
+  justify-content: center;
+  text-align: center;
 }
 
 .profile-field button {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 15%;
-}
-.profile-field label{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 10%;
+  background-color: #1d4ed8; 
+  color: white;
 }
 
-.profile ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+/* 
+ * Default customisation for any screen: Small/Medium/Large
+ */ 
+
+.profile-field label {
+  width: 10%;
 }
 
-.profile ul {
-  display: flex;
-  justify-content: center;
-}
-.custom-icon {
-  color: #3C009D;
+.profile-field input, .profile-field span {
+  width: 60%;
 }
 
-/* Decalre styles for mobile screens */
-@media screen and (max-width: 480px) {
+.profile-field button {
+  width: 20%;
+}
+
+/* Customization for screen type: Large */
+@media screen and (min-width: 480px) {
   body {
     font-size: 14px;
   }
+
   .profile .title {
-    font-size: 1rem;
-  }
-  .profile-field input {
-    min-width: 60%;
-  }
-
-  .profile-field span {
-    display: flex;
-    align-items: center;
-    min-width: 60%;
-  }
-
-  .profile-field button{
-    min-width: 25%;
-  }
-  .profile-field label{
-    display: flex;
-    align-items: center;
-    min-width: 10%;
+    font-size: 1.2rem;
   }
 }
