@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faUser, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import "./Profile.css"
 
@@ -19,7 +19,7 @@ export const ProfileField = ({ labelContent, value, onUpdate }) => {
 
   return (
     <div className="profile-field">
-      <label>{labelContent}</label>
+      <label className="custom-fontawesome-icon">{labelContent}</label>
       {isEditing ? (
         <>
           <input
@@ -27,12 +27,16 @@ export const ProfileField = ({ labelContent, value, onUpdate }) => {
             value={editedValue}
             onChange={(e)=>setEditedValue(e.target.value)}
           />
-          <button onClick={handleUpdateClick}>Update</button>
+          <button style={{backgroundColor: "#1d4e00"}} onClick={handleUpdateClick}>
+            <FontAwesomeIcon icon={ faCheck}/>
+          </button>
         </>
       ) : (
         <>
           <span>{editedValue}</span>
-          <button onClick={handleEditClick}>Edit</button>
+          <button onClick={handleEditClick}>
+            <FontAwesomeIcon icon={ faEdit }/>
+          </button>
         </>
       )}
     </div>
