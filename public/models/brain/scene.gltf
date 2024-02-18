@@ -1,0 +1,263 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v3.10.0",
+    "version": "2.0",
+    "extras": {
+      "author": "3DRT STUDIOS (https://sketchfab.com/Hanako.com)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/human-brain-7a27c17fd6c0488bb31ab093236a47fb",
+      "title": "Human Brain"
+    }
+  },
+  "accessors": [
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 2605,
+      "max": [
+        38.228614807128906,
+        63.273590087890625,
+        55.25382614135742
+      ],
+      "min": [
+        -37.857295989990234,
+        -22.190750122070312,
+        -43.849571228027344
+      ],
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 2605,
+      "bufferView": 0,
+      "byteOffset": 12
+    },
+    {
+      "type": "VEC4",
+      "componentType": 5126,
+      "count": 2605,
+      "bufferView": 0,
+      "byteOffset": 24
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 2605,
+      "bufferView": 0,
+      "byteOffset": 40
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 2605,
+      "bufferView": 0,
+      "byteOffset": 48
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 2605,
+      "bufferView": 0,
+      "byteOffset": 56
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 2605,
+      "bufferView": 0,
+      "byteOffset": 64
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5125,
+      "count": 14550,
+      "bufferView": 1,
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 187560,
+      "byteStride": 72,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 187560,
+      "byteLength": 58200,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "textures": [
+    {
+      "source": 0,
+      "sampler": 0
+    },
+    {
+      "source": 1,
+      "sampler": 0
+    },
+    {
+      "source": 3,
+      "sampler": 0
+    },
+    {
+      "source": 2,
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "uri": "textures/material_0_diffuse.png"
+    },
+    {
+      "mimeType": "image/png",
+      "uri": "textures/material_0_normal.png"
+    },
+    {
+      "mimeType": "image/png",
+      "uri": "textures/specular_1.png"
+    },
+    {
+      "mimeType": "image/png",
+      "uri": "textures/metallicRoughness_1.png"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "scene.bin",
+      "byteLength": 245760
+    }
+  ],
+  "materials": [
+    {
+      "name": "material_0",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "normalTexture": {
+        "index": 1
+      },
+      "extensions": {
+        "KHR_materials_ior": {
+          "ior": 1000
+        },
+        "KHR_materials_specular": {
+          "specularTexture": {
+            "index": 3
+          },
+          "specularColorTexture": {
+            "index": 3
+          }
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4,
+            "TEXCOORD_2": 5,
+            "TEXCOORD_3": 6
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 7
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Sketchfab_model",
+      "rotation": [
+        -0.7071067811865475,
+        0,
+        0,
+        0.7071067811865476
+      ],
+      "children": [
+        1
+      ]
+    },
+    {
+      "name": "root",
+      "children": [
+        2
+      ]
+    },
+    {
+      "name": "GLTF_SceneRootNode",
+      "rotation": [
+        0.7071067811865475,
+        0,
+        0,
+        0.7071067811865476
+      ],
+      "children": [
+        3
+      ]
+    },
+    {
+      "name": "RootNode.0_0",
+      "scale": [
+        0.009999999776482582,
+        0.009999999776482582,
+        0.009999999776482582
+      ],
+      "children": [
+        4
+      ]
+    },
+    {
+      "name": "brain.1_1",
+      "children": [
+        5
+      ]
+    },
+    {
+      "name": "Object_5",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0,
+  "extensionsUsed": [
+    "KHR_materials_ior",
+    "KHR_materials_specular"
+  ]
+}
