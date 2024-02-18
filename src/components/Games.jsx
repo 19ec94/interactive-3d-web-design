@@ -6,8 +6,8 @@ export const Games = () => {
       <div className="title">
        Games 
       </div>
-        <div className="game-list" >
-          Paste link to Anatomy game here
+        <div className="game-list">
+        <a href="http://localhost:5173/anatomy" className="centered-link-container" >Anatomy</a>
         </div>
     </div>
   );
