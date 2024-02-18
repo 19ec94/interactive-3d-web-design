@@ -23,7 +23,7 @@ export const Anatomy = () => {
   const [reachedTarget, setReachedTarget] = useState(false);
   const objectRef = useRef();
   const targetPosition = useRef(new THREE.Vector3(0, 4.15, -0.035));
-  const distanceThreshold = 1;
+  const distanceThreshold = 0.5;
 
   const checkDistanceOnDrag = (l, dl, w, dw) => {
     const position = new THREE.Vector3()
