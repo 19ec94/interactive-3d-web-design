@@ -14,32 +14,83 @@ function setTransparency(modelObject, opacity) {
       }
     });
   }
-}
+};
+
+function checkDistanceOnDrag(l, dl, w, dw, targetPosition, distanceThreshold, setTargetReached) {
+  const position = new THREE.Vector3()
+  if (w && w.elements) {
+    w.decompose(position, new THREE.Quaternion(), new THREE.Vector3())
+    const distance = position.distanceTo(targetPosition);
+    if (distance <= distanceThreshold) {
+      setTargetReached(true);
+    }
+  }
+};
+
+function Organ(modelPath, scale, distanceThreshold, targetPosition, startingPosition) {
+  this.model = useGLTF(modelPath);
+  this.scale = scale;
+  this.distanceThreshold = distanceThreshold;
+  this.targetPosition = targetPosition;
+  this.objRef = useRef();
+  this.startingPosition = startingPosition;
+};
 
 export const Anatomy = () => {
-  const body = useGLTF('models/body/scene.gltf');
-  const brain = useGLTF('models/brain/scene.gltf');
-  setTransparency(body, 0.5)
-  const [reachedTarget, setReachedTarget] = useState(false);
-  const objectRef = useRef();
-  const targetPosition = useRef(new THREE.Vector3(0, 4.15, -0.035));
-  const distanceThreshold = 0.5;
+  const HumanFigure = () => {
+    const body = useGLTF('models/body/scene.gltf');
+    const scaleBody = 1.0;
+    setTransparency(body, 0.5);
+    return <primitive object={body.scene} scale={scaleBody} />
+  };
 
-  const checkDistanceOnDrag = (l, dl, w, dw) => {
-    const position = new THREE.Vector3()
-    if (w && w.elements) {
-      w.decompose(position, new THREE.Quaternion(), new THREE.Vector3())
-      if (objectRef.current) {
-        const distance = position.distanceTo(targetPosition.current);
-        console.log('Distance:', distance);
-        if (distance <= distanceThreshold) {
-          setReachedTarget(true);
-        }
-      }
+  const OrganDisplay = ({ organ, checkDistanceOnDrag, draggable }) => {
+    if (draggable) {
+      return (
+        <group ref={organ.objRef} position={organ.startingPosition}>
+          <PivotControls anchor={[0.75, 0.75, 0.75]} scale={0.5} disableRotations={true} onDrag={checkDistanceOnDrag}>
+            <primitive object={organ.model.scene} scale={organ.scale} position={[0, 0, 0]} />
+          </PivotControls>
+        </group>
+      )
+    }
+    else {
+      return (
+        <group position={organ.targetPosition}>
+          <primitive object={organ.model.scene} scale={organ.scale} position={[0, 0, 0]} />
+        </group>
+      )
     }
   }
 
-  function RotatingBodyWithOrgan() {
+  const [allTargetsReached, setAllTargetsReached] = useState(false);
+
+  // state vars for each organ
+  const [reachedTargetBrain, setReachedTargetBrain] = useState(false);
+
+  const allOrganStates = [reachedTargetBrain];
+
+  const brainOrgan = new Organ('models/brain/scene.gltf', 0.44, 0.5, new THREE.Vector3(0, 4.15, -0.045), [-2, 0, 2]);
+
+  const checkDistanceOnDragBrain = (l, dl, w, dw) => {
+    checkDistanceOnDrag(l, dl, w, dw, brainOrgan.targetPosition, brainOrgan.distanceThreshold, setReachedTargetBrain)
+  }
+
+  const Brain = ({ draggable }) => {
+    return <OrganDisplay organ={brainOrgan} checkDistanceOnDrag={checkDistanceOnDragBrain} draggable={draggable} />
+  };
+
+  const SceneGlobalControls = () => {
+    return (
+      <>
+        <OrbitControls makeDefault enableDamping={false} />
+        <GizmoHelper alignment="bottom-right" margin={[100, 100]}>
+          <GizmoViewport labelColor="white" axisHeadScale={1} />
+        </GizmoHelper>
+      </>
+    )
+  }
+  function RotatingBodyWithOrgans() {
     const bodyRef = useRef();
     useFrame(() => {
       bodyRef.current.rotation.y += 0.01;
@@ -47,12 +98,21 @@ export const Anatomy = () => {
 
     return (
       <group ref={bodyRef}>
-        <primitive object={body.scene} scale={1} />
-        <group position={[0, 4.15, -0.045]}>
-          <primitive object={brain.scene} scale={0.44} position={[0, 0, 0]} />
-        </group>
+        <HumanFigure />
+        <Brain draggable={false} />
       </group>
     );
+  }
+
+  function CheckTargetStates() {
+    useFrame(() => {
+      // set allTargetsReached to true if all states in allOrganStates are true, i.e. all organs reached target.
+      // This is the case if the length and the sum of allOrganStates is equal because false=0 and true=1.
+      if (allOrganStates.length == allOrganStates.reduce((a, b) => a + b, 0)) {
+        setAllTargetsReached(true);
+      }
+    });
+    return (<></>)
   }
 
   return (
@@ -62,26 +122,22 @@ export const Anatomy = () => {
         <ambientLight intensity={0.5} />
         <directionalLight position={[0, 0, 5]} intensity={0.5} />
         <Grid position={[0, -0.01, 0]} args={[10, 10]} />
-        {!reachedTarget &&
-          <primitive object={body.scene} scale={1} />
+
+        <CheckTargetStates />
+
+        {!allTargetsReached &&
+          <HumanFigure />
         }
-        {!reachedTarget && (
-          <group ref={objectRef} position={[-2, 0, 2]}>
-            <PivotControls anchor={[0.75, 0.75, 0.75]} scale={0.5} disableRotations={true} onDrag={checkDistanceOnDrag}>
-              <primitive object={brain.scene} scale={0.44} position={[0, 0, 0]} />
-            </PivotControls>
-          </group>
+        {!allTargetsReached && (
+          <>
+            <Brain draggable={!reachedTargetBrain} />
+          </>
         )}
-        {!reachedTarget && (
-          <GizmoHelper alignment="bottom-right" margin={[100, 100]}>
-            <GizmoViewport labelColor="white" axisHeadScale={1} />
-          </GizmoHelper>
+        {!allTargetsReached && (
+          <SceneGlobalControls />
         )}
-        {!reachedTarget && (
-          <OrbitControls makeDefault />
-        )}
-        {reachedTarget && (
-          <RotatingBodyWithOrgan />
+        {allTargetsReached && (
+          <RotatingBodyWithOrgans />
         )}
       </Canvas>
     </div>
