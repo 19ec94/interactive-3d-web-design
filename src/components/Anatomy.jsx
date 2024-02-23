@@ -67,17 +67,41 @@ export const Anatomy = () => {
 
   // state vars for each organ
   const [reachedTargetBrain, setReachedTargetBrain] = useState(false);
+  const [reachedTargetLungs, setReachedTargetLungs] = useState(false);
+  const [reachedTargetHeart, setReachedTargetHeart] = useState(false);
+  const [reachedTargetDigestive, setReachedTargetDigestive] = useState(false);
 
-  const allOrganStates = [reachedTargetBrain];
+  const allOrganStates = [reachedTargetBrain, reachedTargetLungs, reachedTargetHeart, reachedTargetDigestive];
 
   const brainOrgan = new Organ('models/brain/scene.gltf', 0.44, 0.5, new THREE.Vector3(0, 4.15, -0.045), [-2, 0, 2]);
+  const lungsOrgan = new Organ('models/lungs/scene.gltf', 2.5, 0.5, new THREE.Vector3(0, 3.2, 0.05), [-3, 0, 2.5]);
+  const heartOrgan = new Organ('models/heart/scene.gltf', 0.15, 0.5, new THREE.Vector3(0.07, 3.38, 0.052), [-2.5, 0, 3.0]);
+  const digestiveOrgan = new Organ('models/digestive/scene.gltf', 1.6, 0.5, new THREE.Vector3(0, 2.34, 0), [-4, 0, 3]);
 
   const checkDistanceOnDragBrain = (l, dl, w, dw) => {
     checkDistanceOnDrag(l, dl, w, dw, brainOrgan.targetPosition, brainOrgan.distanceThreshold, setReachedTargetBrain)
-  }
+  };
+  const checkDistanceOnDragLungs = (l, dl, w, dw) => {
+    checkDistanceOnDrag(l, dl, w, dw, lungsOrgan.targetPosition, lungsOrgan.distanceThreshold, setReachedTargetLungs)
+  };
+  const checkDistanceOnDragHeart = (l, dl, w, dw) => {
+    checkDistanceOnDrag(l, dl, w, dw, heartOrgan.targetPosition, heartOrgan.distanceThreshold, setReachedTargetHeart)
+  };
+  const checkDistanceOnDragDigestive = (l, dl, w, dw) => {
+    checkDistanceOnDrag(l, dl, w, dw, digestiveOrgan.targetPosition, digestiveOrgan.distanceThreshold, setReachedTargetDigestive)
+  };
 
   const Brain = ({ draggable }) => {
     return <OrganDisplay organ={brainOrgan} checkDistanceOnDrag={checkDistanceOnDragBrain} draggable={draggable} />
+  };
+  const Lungs = ({ draggable }) => {
+    return <OrganDisplay organ={lungsOrgan} checkDistanceOnDrag={checkDistanceOnDragLungs} draggable={draggable} />
+  };
+  const Heart = ({ draggable }) => {
+    return <OrganDisplay organ={heartOrgan} checkDistanceOnDrag={checkDistanceOnDragHeart} draggable={draggable} />
+  };
+  const Digestive = ({ draggable }) => {
+    return <OrganDisplay organ={digestiveOrgan} checkDistanceOnDrag={checkDistanceOnDragDigestive} draggable={draggable} />
   };
 
   const SceneGlobalControls = () => {
@@ -100,6 +124,9 @@ export const Anatomy = () => {
       <group ref={bodyRef}>
         <HumanFigure />
         <Brain draggable={false} />
+        <Lungs draggable={false} />
+        <Heart draggable={false} />
+        <Digestive draggable={false} />
       </group>
     );
   }
@@ -131,6 +158,9 @@ export const Anatomy = () => {
         {!allTargetsReached && (
           <>
             <Brain draggable={!reachedTargetBrain} />
+            <Lungs draggable={!reachedTargetLungs} />
+            <Heart draggable={!reachedTargetHeart} />
+            <Digestive draggable={!reachedTargetDigestive} />
           </>
         )}
         {!allTargetsReached && (
