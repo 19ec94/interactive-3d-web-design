@@ -65,7 +65,7 @@ export const Signup = () => {
     try{
       console.log('Data to be sent', formData);// debugging
       // POST Signup data
-      const response = await axios.post('/user/signup', formData)
+      const response = await axios.post('/api/user/signup', formData)
       console.log(response);// debugging
       // Set error to empty string upon success
       setError('');

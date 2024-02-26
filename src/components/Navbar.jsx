@@ -39,6 +39,7 @@ export const Navbar = () => {
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
         </div>
       ) : (
         <div
@@ -63,6 +64,7 @@ export const Navbar = () => {
         <li>
           <NavLink to="/scoreboard">Scoreboard</NavLink>
         </li>
+        <li></li>
       </ul>
         ) : (
       <ul className={menuOpen ? "open" : ""}>
@@ -74,6 +76,9 @@ export const Navbar = () => {
         </li>
         <li>
           <NavLink to="/scoreboard">Scoreboard</NavLink>
+        </li>
+        <li>
+        <NavLink to="/anatomy">Anatomy</NavLink>
         </li>
       </ul>
         )
