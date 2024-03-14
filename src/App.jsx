@@ -4,7 +4,7 @@ import {Route, Routes } from "react-router-dom";
 
 // Import alphabatically all the components to be used in the app 
 import { About } from './components/About';
-import { Anatomy } from './components/Anatomy';
+import { AnatomyLevel1,AnatomyLevel2 } from './components/Anatomy';
 import { AuthProvider } from './components/AuthContext';
 import { Dashboard } from './components/Dashboard';
 import { Home } from './components/Home';
@@ -28,7 +28,8 @@ function App() {
           {/* Public routes in alphabetical order */}
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/anatomy" element={ <Anatomy />} />
+          <Route exact path="/anatomy" element={ <AnatomyLevel1 />} />
+          <Route exact path="/anatomy2" element={ <AnatomyLevel2 />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/scoreboard" element={<Scoreboard />} />
