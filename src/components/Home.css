@@ -1,0 +1,31 @@
+.custom-ul {
+    list-style-type: none;
+  }
+
+  .custom-li{
+    margin: 30px auto;
+  }
+  .custom-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 35px;
+    color: #fff;
+    background: #4c00b4;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+.button-container {
+text-align: center;
+width: 160px;
+margin: 0 auto;
+}
+
+.img-center{
+    margin-top: 50px;
+    text-align: center;
+}
