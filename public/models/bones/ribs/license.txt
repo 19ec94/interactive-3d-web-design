@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low poly skeleton ribs
+* source:	https://sketchfab.com/3d-models/low-poly-skeleton-ribs-bbfe5e9f25854433b8fb8c4a3f4eaf33
+* author:	assetfactory (https://sketchfab.com/assetfactory)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low poly skeleton ribs" (https://sketchfab.com/3d-models/low-poly-skeleton-ribs-bbfe5e9f25854433b8fb8c4a3f4eaf33) by assetfactory (https://sketchfab.com/assetfactory) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
