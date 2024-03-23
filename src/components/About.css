@@ -1,0 +1,17 @@
+.about-text {
+    font-family: Arial, sans-serif;
+    width: 25%;
+    margin: 0 auto;
+
+}
+
+.paragraph-container {
+    text-align: center;
+
+}
+
+.paragraph {
+    text-align: justify;
+    margin-bottom: 30px;
+    width: 100%;
+}
